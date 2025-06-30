@@ -1,0 +1,27 @@
+# 积分环节
+
+```c
+/***************************************************************************************************
+  * @brief  积分环节函数  
+  * @param  GiveValue:   当前输入值
+  *         result_back: 上一时刻值   
+  *         dt: 时间间隔  
+  *         ki: 积分时间常数
+  *         max: 最大值
+  *         min: 最小值
+  * @retval 运算结果
+  */
+double Integral_Function(double GiveValue,double *result_back,float dt,float ki,float max,float min)
+{
+    double val,round_val;
+  
+    val = *result_back + (GiveValue * dt / ki);
+    
+    if(val > max)      val = max;       
+    else if(val < min) val = min;
+    
+    *result_back = val;
+             
+    return val;
+}
+```

@@ -1,0 +1,26 @@
+# 斜坡函数
+
+```c
+/***************************************************************************************************
+  * @brief  斜坡函数      y(t) = y(t-1) + k * deltaT
+  * @param  y_pre:  前一个输出值
+            dt:     计算间隔(s)
+            k:      速率
+            target: 目标值
+  * @retval None
+  */
+float Slope_function(float y_pre,float dt,float k,float target)
+{
+    uint8_t Yend;
+    
+    Yend = y_pre + k * dt; //计算公式 
+
+    y_pre = Yend;
+    
+    if(Yend >= target)
+        Yend = target;
+    
+    return Yend;
+}
+```
+

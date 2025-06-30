@@ -1,0 +1,25 @@
+# 一阶惯性环节
+
+```c
+/***************************************************************************************************
+  * @brief  惯性环节函数  y(t) = (x(t)*deltaT + y(t-1)*Tau) / (deltaT + Tau)
+  * @param  StepValue: x(t)
+  *         result_back: y(t-1)
+  *         dt: deltaT
+  *         T: Tau
+  * @retval 运算结果
+  */
+float Inertia_Function(float StepValue,float result_back,float dt,float T)
+{
+    float val;
+                                     
+    if(fabs(StepValue - *result_back) < 0.01)   
+        val = StepValue;        
+    else    
+        val = (StepValue * dt + result_back * T)/(dt + T);  //计算公式  
+         
+    result_back = val;          //输出信号的上一刻的值
+  
+    return val;
+}
+```
